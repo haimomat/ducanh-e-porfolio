@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netflix Digital Marketing E-Portfolio</title>
+  <style>
+    :root{
+      --bg:#07070a;
+      --panel:#101115;
+      --panel-2:#15171d;
+      --soft:#1d212b;
+      --text:#f5f7fb;
+      --muted:#b8bec9;
+      --line:rgba(255,255,255,.08);
+      --brand:#e50914;
+      --brand-2:#ff4655;
+      --glow:rgba(229,9,20,.24);
+      --max:1240px;
+      --radius:26px;
+      --shadow:0 18px 60px rgba(0,0,0,.32);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(229,9,20,.18), transparent 28%),
+        radial-gradient(circle at top left, rgba(255,255,255,.06), transparent 22%),
+        linear-gradient(180deg, #0b0b10 0%, #050507 100%);
+      color:var(--text);
+      line-height:1.7;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .shell{width:min(calc(100% - 32px), var(--max));margin:0 auto}
+    .hero{
+      padding:28px 0 18px;
+    }
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+      padding:12px 18px;border:1px solid var(--line);background:rgba(16,17,21,.75);backdrop-filter: blur(10px);
+      border-radius:999px;position:sticky;top:12px;z-index:40;box-shadow:var(--shadow)
+    }
+    .brandmark{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .brandmark .n{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,var(--brand),#a1040b);box-shadow:0 10px 28px var(--glow);font-size:1.05rem}
+    .nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .nav a{padding:10px 14px;border-radius:999px;color:var(--muted);font-size:.92rem;transition:.25s ease}
+    .nav a:hover{background:rgba(255,255,255,.06);color:#fff}
+    .menu-btn{display:none;background:none;border:none;color:#fff;font-size:1rem;padding:10px 14px;border-radius:999px;border:1px solid var(--line)}
+
+    .hero-card{
+      margin-top:22px;padding:38px;border:1px solid var(--line);border-radius:34px;overflow:hidden;position:relative;
+      background:
+        linear-gradient(135deg, rgba(229,9,20,.16), rgba(255,255,255,.02) 42%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        rgba(16,17,21,.78);
+      box-shadow:var(--shadow)
+    }
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border:1px solid rgba(255,255,255,.1);border-radius:999px;color:#ffd4d7;background:rgba(229,9,20,.08);font-size:.86rem;margin-bottom:18px}
+    h1{margin:0 0 14px;font-size:clamp(2.2rem,4.6vw,4.5rem);line-height:1.02;letter-spacing:-.04em}
+    .lead{font-size:1.06rem;color:#d8dde7;max-width:62ch;margin:0 0 24px}
+    .hero-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+    .meta{padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+    .meta strong{display:block;font-size:1.1rem;margin-bottom:4px}
+    .meta span{color:var(--muted);font-size:.92rem}
+    .hero-visual{display:grid;gap:16px}
+    .hero-main{border-radius:26px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:0 16px 42px rgba(0,0,0,.4)}
+    .hero-strip{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .mini-shot{border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
+
+    .layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:28px;margin:30px auto 42px}
+    aside{position:sticky;top:94px;align-self:start}
+    .toc{padding:22px;border:1px solid var(--line);border-radius:28px;background:rgba(16,17,21,.72);box-shadow:var(--shadow)}
+    .toc h2{font-size:.88rem;text-transform:uppercase;letter-spacing:.14em;color:#ffb6bc;margin:0 0 16px}
+    .toc a{display:block;padding:11px 12px;border-radius:14px;color:var(--muted);font-size:.96rem;transition:.2s ease}
+    .toc a:hover{background:rgba(255,255,255,.05);color:#fff}
+    .toc .small{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
+    main{display:grid;gap:22px}
+    section{padding:28px;border-radius:30px;border:1px solid var(--line);background:rgba(16,17,21,.78);box-shadow:var(--shadow)}
+    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+    .section-kicker{font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:#ff9ea7;margin:0 0 8px}
+    .section-head h2{margin:0;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.05;letter-spacing:-.03em}
+    .section-no{font-size:clamp(2.4rem,5vw,4rem);line-height:.9;color:rgba(255,255,255,.08);font-weight:800;letter-spacing:-.06em}
+    p{margin:0 0 14px;color:#e8ecf2}
+    .muted{color:var(--muted)}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .stack{display:grid;gap:18px}
+    .card{padding:18px;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));border:1px solid var(--line)}
+    .card h3{margin:0 0 8px;font-size:1.05rem}
+    .card p{margin:0;color:#d5dae2;font-size:.98rem}
+    .figure{overflow:hidden;border-radius:24px;border:1px solid var(--line);background:#0b0c0f}
+    .figure img{width:100%;height:auto;object-fit:cover}
+    .caption{padding:12px 16px;border-top:1px solid var(--line);background:rgba(255,255,255,.03);font-size:.92rem;color:#d7dbe4}
+    .caption span{display:block;color:#98a2b3;font-size:.82rem;margin-top:4px}
+    .pill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .pill{padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:.9rem;color:#d9dde5}
+
+    .ladder-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+    .steps{display:grid;gap:14px}
+    .step{display:grid;grid-template-columns:74px minmax(0,1fr);gap:14px;align-items:start;padding:16px;border-radius:22px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+    .step-num{width:74px;height:74px;border-radius:18px;display:grid;place-items:center;font-size:1.6rem;font-weight:800;background:linear-gradient(180deg, rgba(229,9,20,.95), rgba(165,5,14,.85));box-shadow:0 12px 28px rgba(229,9,20,.18)}
+    .step h4{margin:2px 0 8px;font-size:1.02rem}
+    .step p{margin:0;color:#d5dbe4;font-size:.96rem}
+
+    .race-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .race-card{padding:20px;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));border:1px solid var(--line)}
+    .race-card strong{display:block;color:#fff;font-size:1.12rem;margin-bottom:8px}
+
+    .score-list{display:grid;gap:14px}
+    .score-item{padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+    .score-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:10px;font-weight:600}
+    .bar{height:10px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}
+    .bar > span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg, var(--brand), #ff6b77)}
+    .note{padding:18px 20px;border-radius:22px;border:1px solid rgba(229,9,20,.24);background:rgba(229,9,20,.07);color:#ffe6e8}
+    .refs{columns:2;column-gap:24px}
+    .refs p{break-inside:avoid;margin-bottom:14px;color:#d5dae2;font-size:.96rem}
+    footer{padding:0 0 42px;color:#8f99a8;text-align:center;font-size:.92rem}
+
+    @media (max-width:1080px){
+      .layout{grid-template-columns:1fr}
+      aside{position:static}
+      .toc{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+      .toc h2,.toc .small{display:none}
+      .toc a{padding:10px 14px;background:rgba(255,255,255,.04)}
+      .hero-grid,.ladder-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:820px){
+      .topbar{padding:12px 14px;border-radius:22px;align-items:flex-start}
+      .menu-btn{display:inline-flex}
+      .nav{display:none;flex-direction:column;width:100%;padding-top:8px}
+      .nav.show{display:flex}
+      .nav a{background:rgba(255,255,255,.03)}
+      .hero-card,section{padding:22px}
+      .hero-meta,.grid-2,.grid-3,.race-grid{grid-template-columns:1fr}
+      .hero-strip{grid-template-columns:1fr}
+      .refs{columns:1}
+      .step{grid-template-columns:1fr}
+      .step-num{width:60px;height:60px;border-radius:16px;font-size:1.35rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="shell hero">
+    <div class="topbar">
+      <div class="brandmark">
+        <div class="n">N</div>
+        <div>Netflix E-Portfolio</div>
+      </div>
+      <button class="menu-btn" id="menuBtn">Menu</button>
+      <nav class="nav" id="navLinks">
+        <a href="#intro">Intro</a>
+        <a href="#ladder">Engagement</a>
+        <a href="#social">Instagram</a>
+        <a href="#website">Website</a>
+        <a href="#trend">Trend</a>
+        <a href="#conclusion">Conclusion</a>
+        <a href="#references">References</a>
+      </nav>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Digital Marketing • Netflix • MKT3039</div>
+          <h1>Netflix as a digital brand built through content, community and personalisation.</h1>
+          <p class="lead">This e-portfolio evaluates how Netflix uses digital channels to attract attention, encourage interaction and keep audiences engaged over time. The analysis focuses on the Ladder of Engagement, Instagram through the RACE framework, website effectiveness and AI personalisation as a current trend.</p>
+          <div class="pill-list">
+            <div class="pill">Streaming platform</div>
+            <div class="pill">Visual social media</div>
+            <div class="pill">Website usability</div>
+            <div class="pill">AI personalisation</div>
+          </div>
+          <div class="hero-meta">
+            <div class="meta"><strong>Ladder of Engagement</strong><span>How users move from viewing to creating content.</span></div>
+            <div class="meta"><strong>Instagram + RACE</strong><span>How social media supports reach, action, conversion and loyalty.</span></div>
+            <div class="meta"><strong>Website + AI trend</strong><span>How Netflix supports discovery, retention and long-term relevance.</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-main figure">
+            <img src="src/02-homepage-recommendations.png" alt="Netflix homepage showing browsing and recommendations">
+          </div>
+          <div class="hero-strip">
+            <div class="mini-shot figure"><img src="src/07-instagram-profile.png" alt="Netflix Instagram profile"></div>
+            <div class="mini-shot figure"><img src="src/18-ai-recommendations.png" alt="Netflix personalised recommendations"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell layout">
+    <aside>
+      <div class="toc">
+        <h2>Navigate</h2>
+        <a href="#intro">Introduction</a>
+        <a href="#ladder">Ladder of Engagement</a>
+        <a href="#social">Instagram Evaluation</a>
+        <a href="#website">Website Checklist</a>
+        <a href="#trend">Trend Analysis</a>
+        <a href="#conclusion">Conclusion</a>
+        <a href="#references">Reference List</a>
+        <div class="small">Designed in a darker cinematic style so it feels different from the previous portfolio layouts.</div>
+      </div>
+    </aside>
+
+    <main>
+      <section id="intro">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Section 01</div>
+            <h2>Introduction</h2>
+          </div>
+          <div class="section-no">01</div>
+        </div>
+        <div class="grid-2">
+          <div class="stack">
+            <p>Digital marketing is important for brands today because it helps them communicate with customers, promote services and build stronger relationships online. This e-portfolio focuses on Netflix, a well-known streaming platform that operates in a highly competitive market. The brand does not only distribute films and series. It also uses digital channels to create awareness, encourage discussion and keep users engaged over time.</p>
+            <p>The portfolio covers four main areas. First, it explains the Ladder of Engagement and shows how Netflix moves audiences from simple viewing to deeper participation. Second, it evaluates Instagram using the RACE framework. Third, it assesses the Netflix website through a website checklist. Finally, it discusses AI personalisation as a current digital marketing trend. Overall, the portfolio shows how digital marketing ideas can be applied to a real brand in a practical way.</p>
+          </div>
+          <div class="stack">
+            <div class="figure">
+              <img src="src/02-homepage-recommendations.png" alt="Netflix homepage with recommendations">
+              <div class="caption">Figure 2. Netflix homepage showing content browsing and recommendations<span>Netflix platform screenshot</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ladder">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Section 02</div>
+            <h2>Ladder of Engagement</h2>
+          </div>
+          <div class="section-no">02</div>
+        </div>
+        <div class="ladder-grid">
+          <div class="stack">
+            <p>The Ladder of Engagement shows that customers do not all interact with a brand in the same way. Some only watch content, while others react, comment, share or create their own content. This is useful in digital marketing because it shows that engagement can move from simple actions to deeper forms of participation, which usually create more value for the brand.</p>
+            <p>Netflix is a strong example of this model because it connects with users across its platform and social media channels. The brand is not only a place to watch shows. It also creates opportunities for conversation, memes, reactions and fan-made content around popular titles.</p>
+            <div class="figure">
+              <img src="src/01-ladder-model.png" alt="Ladder of Engagement model">
+              <div class="caption">Figure 1. Ladder of Engagement Model<span>Framework used in the engagement section</span></div>
+            </div>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div>
+                <h4>Viewing</h4>
+                <p>Most users first engage with Netflix by browsing the homepage, scanning thumbnails and watching trailers before choosing a title. This is passive, but it remains the starting point of the customer journey.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div>
+                <h4>Reacting</h4>
+                <p>Users then begin to like, tap, react or leave very short responses to trailers and posts. These actions are small, but they show visible interest and help increase social visibility.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div>
+                <h4>Commenting</h4>
+                <p>Comments make engagement more active. Viewers discuss endings, characters and new seasons, which helps Netflix stay visible in algorithm-driven platforms.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div>
+                <h4>Sharing</h4>
+                <p>Once users repost memes, clips and trailers, they become part of the promotion process. Shared content often feels more personal than official advertising.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">5</div>
+              <div>
+                <h4>Creating</h4>
+                <p>At the highest level, users create fan edits, reviews, reaction videos and other original posts about Netflix titles. A smaller group does this, but their effect can still be very strong.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <div class="figure">
+            <img src="src/03-user-reactions.png" alt="User reactions on a Netflix social media post">
+            <div class="caption">Figure 3. User reactions on a Netflix social media post<span>Likes and lightweight responses</span></div>
+          </div>
+          <div class="figure">
+            <img src="src/04-user-comments.jpg" alt="User comments on a Netflix social media post">
+            <div class="caption">Figure 4. User comments on Netflix social media post<span>Conversation around a release</span></div>
+          </div>
+          <div class="figure">
+            <img src="src/05-shared-memes.png" alt="Netflix content shared as memes on social media">
+            <div class="caption">Figure 5. Netflix content shared as memes on social media<span>Sharing behaviour spreads the message further</span></div>
+          </div>
+          <div class="figure">
+            <img src="src/06-user-generated-content.png" alt="User-generated content related to Netflix shows">
+            <div class="caption">Figure 6. User-generated content related to Netflix shows<span>Users move from reacting to creating</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="social">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Section 03</div>
+            <h2>Social Media Platform Evaluation</h2>
+          </div>
+          <div class="section-no">03</div>
+        </div>
+
+        <div class="grid-2">
+          <div class="stack">
+            <p>Instagram is a strong platform for Netflix because it is highly visual and works well for trailers, posters, reels and short clips. This matters because Netflix depends heavily on visual storytelling. Instagram also supports direct communication through likes, comments, reels and stories, which makes it useful for both promotion and interaction.</p>
+            <div class="figure">
+              <img src="src/07-instagram-profile.png" alt="Netflix Instagram profile">
+              <div class="caption">Figure 7. Netflix Instagram profile<span>Brand presence on a visual social platform</span></div>
+            </div>
+          </div>
+          <div class="stack">
+            <p>To evaluate Instagram, the RACE framework is useful because it shows how a brand uses digital channels to create awareness, encourage action, influence behaviour and build ongoing relationships. For Netflix, Instagram is especially important before and after a release because it can build excitement quickly and keep discussions active.</p>
+            <div class="figure">
+              <img src="src/08-race-framework.png" alt="RACE framework">
+              <div class="caption">Figure 8. RACE Framework<span>Reach, Act, Convert and Engage</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="race-grid" style="margin-top:18px;">
+          <div class="race-card">
+            <strong>Reach</strong>
+            <p>Instagram helps Netflix attract attention through trailers, posters, short videos and reels. This is especially useful when a new show launches and Netflix needs to create awareness quickly.</p>
+          </div>
+          <div class="figure">
+            <img src="src/09-instagram-series-post.jpg" alt="Netflix Instagram post promoting a series">
+            <div class="caption">Figure 9. Netflix Instagram post promoting a series<span>Instagram supports visibility and attention</span></div>
+          </div>
+          <div class="race-card">
+            <strong>Act</strong>
+            <p>At this stage, users like posts, comment, answer polls and share reels. Humour, character-focused content and recognisable scenes help trigger responses.</p>
+          </div>
+          <div class="figure">
+            <img src="src/10-instagram-interaction.jpg" alt="User interaction on a Netflix Instagram post">
+            <div class="caption">Figure 10. User interaction on Netflix Instagram post<span>Comments and reactions show active response</span></div>
+          </div>
+          <div class="race-card">
+            <strong>Convert</strong>
+            <p>For Netflix, conversion does not mean direct purchase on Instagram. It means moving users from social media interest to actually watching a show on the platform.</p>
+          </div>
+          <div class="figure">
+            <img src="src/11-instagram-convert.png" alt="Netflix Instagram content that encourages viewing">
+            <div class="caption">Figure 11. Instagram content that encourages users to watch a new release<span>Short-form content can trigger curiosity and viewing behaviour</span></div>
+          </div>
+          <div class="race-card">
+            <strong>Engage</strong>
+            <p>Netflix uses a casual and entertaining tone so that recurring posts, updates and memes keep followers interested over time. This supports longer-term brand relationships.</p>
+          </div>
+          <div class="figure">
+            <img src="src/12-instagram-engage.png" alt="Ongoing interaction between Netflix and followers">
+            <div class="caption">Figure 12. Ongoing interaction between Netflix and followers<span>Recurring content helps the brand stay visible</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="website">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Section 04</div>
+            <h2>Website Checklist</h2>
+          </div>
+          <div class="section-no">04</div>
+        </div>
+
+        <div class="grid-2">
+          <div class="stack">
+            <p>Websites remain an important part of digital marketing because they help users browse content, make decisions and manage their experience. For Netflix, the website is central to the viewing journey because it supports discovery, playback and account activity.</p>
+            <div class="figure">
+              <img src="src/13-website-checklist.png" alt="Netflix website checklist table">
+              <div class="caption">Table 1. Netflix Website Checklist<span>Criteria used to evaluate the website</span></div>
+            </div>
+          </div>
+          <div class="score-list">
+            <div class="score-item">
+              <div class="score-head"><span>Navigation</span><span>4.5 / 5</span></div>
+              <div class="bar"><span style="width:90%"></span></div>
+            </div>
+            <div class="score-item">
+              <div class="score-head"><span>Content presentation</span><span>4.5 / 5</span></div>
+              <div class="bar"><span style="width:90%"></span></div>
+            </div>
+            <div class="score-item">
+              <div class="score-head"><span>Personalisation</span><span>5 / 5</span></div>
+              <div class="bar"><span style="width:100%"></span></div>
+            </div>
+            <div class="score-item">
+              <div class="score-head"><span>Mobile responsiveness</span><span>4.5 / 5</span></div>
+              <div class="bar"><span style="width:90%"></span></div>
+            </div>
+            <div class="score-item">
+              <div class="score-head"><span>Search function</span><span>3.5 / 5</span></div>
+              <div class="bar"><span style="width:70%"></span></div>
+            </div>
+            <div class="note">Netflix performs strongly in navigation, content presentation, personalisation and mobile usability. The main weaknesses are that the interface can sometimes feel crowded and the search function is less strong than the platform’s recommendation system.</div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <div class="figure">
+            <img src="src/14-homepage-categories.png" alt="Netflix homepage structure and content categories">
+            <div class="caption">Figure 13. Netflix homepage structure and content categories<span>Navigation and browsing rows support discovery</span></div>
+          </div>
+          <div class="figure">
+            <img src="src/15-title-page.png" alt="Netflix title page showing trailer and description">
+            <div class="caption">Figure 14. Netflix title page showing trailer, image and description<span>Content presentation reduces uncertainty before watching</span></div>
+          </div>
+          <div class="figure">
+            <img src="src/16-mobile-interface.png" alt="Netflix mobile interface and browsing layout">
+            <div class="caption">Figures 15 & 16. Personalisation and mobile responsiveness<span>Continue Watching and cross-device usability</span></div>
+          </div>
+          <div class="figure">
+            <img src="src/17-search-function.png" alt="Netflix search bar and search results page">
+            <div class="caption">Figure 17. Netflix search bar and search results page<span>Search is useful, but not always fully precise</span></div>
+          </div>
+          <div class="figure" style="grid-column:1/-1;">
+            <img src="src/13-website-checklist.png" alt="Checklist criteria">
+            <div class="caption">Figure 17A. Checklist criteria used in the evaluation<span>Included again here for easier reference in the website section</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trend">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Section 05</div>
+            <h2>Trend Analysis</h2>
+          </div>
+          <div class="section-no">05</div>
+        </div>
+        <div class="grid-2">
+          <div class="stack">
+            <p>One important trend in digital marketing is the growing use of artificial intelligence for personalisation. This is relevant because audiences now expect faster, more relevant and more tailored digital experiences. For Netflix, AI personalisation is one of the brand’s biggest strengths because it helps users find suitable content based on previous behaviour.</p>
+            <p>This trend improves the user experience by reducing search effort and making content discovery feel more personal. It can also increase satisfaction and time spent on the platform, which supports both retention and business performance.</p>
+            <div class="figure">
+              <img src="src/18-ai-recommendations.png" alt="AI-based personalised recommendations on Netflix">
+              <div class="caption">Figure 18. AI-based personalised recommendations on Netflix<span>Recommendation rows adapt to viewing behaviour</span></div>
+            </div>
+          </div>
+          <div class="stack">
+            <p>At the same time, AI personalisation also has limits. If the system recommends similar titles too often, users may see less variety and have fewer chances to discover something unexpected. Privacy is also important because users may not always know how their data is collected and used.</p>
+            <p>Overall, AI personalisation is highly relevant to Netflix because it supports content discovery, user satisfaction and long-term retention. However, the brand still needs to balance personal relevance with variety, user control and trust.</p>
+            <div class="figure">
+              <img src="src/19-subscriber-growth.png" alt="Number of Netflix paid subscribers worldwide 2013 to 2024">
+              <div class="caption">Figure 19. Number of Netflix paid subscribers worldwide 2013–2024<span>Growth in subscribers shows the scale of the platform</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="conclusion">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Section 06</div>
+            <h2>Conclusion</h2>
+          </div>
+          <div class="section-no">06</div>
+        </div>
+        <p>This e-portfolio has shown how digital marketing concepts can be applied to Netflix as a real brand. The analysis of the Ladder of Engagement, Instagram, website checklist and AI personalisation suggests that Netflix is strong at attracting attention, encouraging interaction and creating a personalised digital experience. At the same time, the portfolio also shows some limitations, such as content overload, search accuracy and the risk of over-personalisation. Overall, Netflix remains a strong example of a brand that uses digital marketing effectively to support both short-term attention and long-term audience relationships.</p>
+      </section>
+
+      <section id="references">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Reference List</div>
+            <h2>References</h2>
+          </div>
+          <div class="section-no">REF</div>
+        </div>
+        <div class="refs">
+          <p>1. Chaffey, D. and Ellis-Chadwick, F. (2019) <em>Digital Marketing</em>. 7th edn. Harlow: Pearson.</p>
+          <p>2. Chaffey, D. and Smith, P.R. (2022) <em>Digital Marketing Excellence: Planning, Optimizing and Integrating Online Marketing</em>. 6th edn. London: Routledge.</p>
+          <p>3. Chaffey, D., Smith, P.R. and Smith, P.R. (2013) <em>eMarketing eXcellence: Planning and Optimizing Your Digital Marketing</em>. London: Routledge.</p>
+          <p>4. Cyr, D. (2008) ‘Modeling website design across cultures: Relationships to trust, satisfaction, and e-loyalty’, <em>Journal of Management Information Systems</em>, 24(4), pp. 47–72.</p>
+          <p>5. Davenport, T.H., Guha, A., Grewal, D. and Bressgott, T. (2020) ‘How artificial intelligence will change the future of marketing’, <em>Journal of the Academy of Marketing Science</em>, 48(1), pp. 24–42.</p>
+          <p>6. Flavián, C., Guinalíu, M. and Gurrea, R. (2006) ‘The role played by perceived usability, satisfaction and consumer trust on website loyalty’, <em>Information &amp; Management</em>, 43(1), pp. 1–14.</p>
+          <p>7. Huang, M.H. and Rust, R.T. (2021) ‘A strategic framework for artificial intelligence in marketing’, <em>Journal of the Academy of Marketing Science</em>, 49(1), pp. 30–50.</p>
+          <p>8. Kaplan, A.M. and Haenlein, M. (2010) ‘Users of the world, unite! The challenges and opportunities of social media’, <em>Business Horizons</em>, 53(1), pp. 59–68.</p>
+          <p>9. McKinsey &amp; Company (2021) <em>The future of personalization—and how to get ready for it</em>. Available at: https://www.mckinsey.com.</p>
+          <p>10. Nielsen, J. (2006) <em>Participation inequality: Encouraging more users to contribute</em>. Available at: https://www.nngroup.com/articles/participation-inequality/.</p>
+          <p>11. Nielsen Norman Group (2020) <em>Website usability: Guidelines and best practices</em>. Available at: https://www.nngroup.com.</p>
+          <p>12. Smith, P.R. and Zook, Z. (2016) <em>Marketing Communications: Offline and Online Integration, Engagement and Analytics</em>. 6th edn. London: Kogan Page.</p>
+          <p>13. Statista (2025) <em>Netflix: number of subscribers worldwide</em>. Available at: https://www.statista.com/.</p>
+          <p>14. Tiago, M.T.P.M.B. and Veríssimo, J.M.C. (2014) ‘Digital marketing and social media: Why bother?’, <em>Business Horizons</em>, 57(6), pp. 703–708.</p>
+          <p>15. Wedel, M. and Kannan, P.K. (2016) ‘Marketing analytics for data-rich environments’, <em>Journal of Marketing</em>, 80(6), pp. 97–121.</p>
+          <p>16. Netflix Tudum (2025) <em>How to use Netflix’s new homepage features</em>. Available at: https://www.netflix.com/tudum/articles/netflix-new-homepage-layout-user-guide.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    Built for AS2 – Digital Marketing E-Portfolio • Styled differently from the previous portfolio layouts.
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('navLinks');
+    btn?.addEventListener('click', () => nav.classList.toggle('show'));
+    document.querySelectorAll('.nav a, .toc a').forEach(link => {
+      link.addEventListener('click', () => nav.classList.remove('show'));
+    });
+  </script>
+</body>
+</html>
